@@ -19,9 +19,28 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: Center(
-        child: CategoryCard(image: 'bussiness.jpg',title: 'bussiness',)
-      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: Column(
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Wrap(
+                  spacing: 10,
+                  children: [
+                    CategoryCard(image: 'bussiness.jpg', title: 'bussiness'),
+                    CategoryCard(image: 'entertainment.jpg', title: 'entertainment'),
+                    CategoryCard(image: 'science.jpg', title: 'science'),
+                    CategoryCard(image: 'sportsNews.jpg', title: 'Sports'),
+                    CategoryCard(image: 'technology.jpg', title: 'technology'),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      )
     );
   }
 }

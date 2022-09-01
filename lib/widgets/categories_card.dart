@@ -7,32 +7,37 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            child: SizedBox(
-              height: 110,
-              width: 180,
-              child: Image.asset(
-                'assets/images/$image',
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            child: Container(
+    return GestureDetector(
+      onTap: () {
+        
+      },
+      child: Container(
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              child: SizedBox(
                 height: 110,
                 width: 180,
-                color: Colors.black26,
-                child: Center(
-                  child: Text("${title[0].toUpperCase()}${title.substring(1).toLowerCase()}",
-                      style: const TextStyle(color: Colors.white, fontSize: 18)),
-                )),
-          )
-        ],
+                child: Image.asset(
+                  'assets/images/$image',
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              child: Container(
+                  height: 110,
+                  width: 180,
+                  color: Colors.black26,
+                  child: Center(
+                    child: Text("${title[0].toUpperCase()}${title.substring(1).toLowerCase()}",
+                        style: const TextStyle(color: Colors.white, fontSize: 18)),
+                  )),
+            )
+          ],
+        ),
       ),
     );
   }
