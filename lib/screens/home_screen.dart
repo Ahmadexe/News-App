@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0.0,
       ),
       body: Center(
-        child: CategoryCard()
+        child: CategoryCard(image: 'bussiness.jpg',title: 'bussiness',)
       ),
     );
   }
