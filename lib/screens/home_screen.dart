@@ -82,9 +82,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemCount: articles.length,
                             itemBuilder: (context, index) {
                               return NewsCard(
-                                  imageUrl: articles[index].urlToImage!,
-                                  title: articles[index].title!,
-                                  description: articles[index].description!);
+                                imageUrl: articles[index].urlToImage!,
+                                title: articles[index].title!,
+                                description: articles[index].description!,
+                                url: articles[index].url!,
+                              );
                             })
                       ],
                     ),
