@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 class CategoryCard extends StatelessWidget {
   final String image;
   final String title;
-  const CategoryCard({required this.image,required this.title,super.key});
+  final Function onPressed;
+  const CategoryCard({required this.image,required this.title, required this.onPressed ,super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        
+        onPressed();
       },
       child: Container(
         child: Stack(
