@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('NewsApp', style: TextStyle(color: Colors.black),),
+        title: const Text('NewsApp', style: TextStyle(color: Colors.black),),
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 scrollDirection: Axis.horizontal,
                 child: Wrap(
                   spacing: 10,
-                  children: [
+                  children: const [
                     CategoryCard(image: 'bussiness.jpg', title: 'bussiness'),
                     CategoryCard(image: 'entertainment.jpg', title: 'entertainment'),
                     CategoryCard(image: 'science.jpg', title: 'science'),
