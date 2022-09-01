@@ -12,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   List<Article> articles = [];
   bool _isLoading = false;
   @override
@@ -34,48 +33,63 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text('NewsApp', style: TextStyle(color: Colors.black),),
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Center(
-            child: Column(
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Wrap(
-                    spacing: 10,
-                    children: const [
-                      CategoryCard(image: 'bussiness.jpg', title: 'bussiness'),
-                      CategoryCard(image: 'entertainment.jpg', title: 'entertainment'),
-                      CategoryCard(image: 'science.jpg', title: 'science'),
-                      CategoryCard(image: 'sportsNews.jpg', title: 'Sports'),
-                      CategoryCard(image: 'technology.jpg', title: 'technology'),
-                    ],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text(
+            'NewsApp',
+            style: TextStyle(color: Colors.black),
+          ),
+          centerTitle: true,
+          elevation: 0.0,
+        ),
+        body: _isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Wrap(
+                            spacing: 10,
+                            children: const [
+                              CategoryCard(
+                                  image: 'bussiness.jpg', title: 'bussiness'),
+                              CategoryCard(
+                                  image: 'entertainment.jpg',
+                                  title: 'entertainment'),
+                              CategoryCard(
+                                  image: 'science.jpg', title: 'science'),
+                              CategoryCard(
+                                  image: 'sportsNews.jpg', title: 'Sports'),
+                              CategoryCard(
+                                  image: 'technology.jpg', title: 'technology'),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            itemCount: articles.length,
+                            itemBuilder: (context, index) {
+                              return NewsCard(
+                                  imageUrl: articles[index].urlToImage!,
+                                  title: articles[index].title!,
+                                  description: articles[index].description!);
+                            })
+                      ],
+                    ),
                   ),
                 ),
-                SizedBox(height: 30,),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const ClampingScrollPhysics(),
-                  itemCount: articles.length,
-                  itemBuilder: (context, index) {
-                    return NewsCard(imageUrl: articles[index].urlToImage!, title: articles[index].title!, description: articles[index].description!);
-                  }
-                )
-      
-              ],
-            ),
-          ),
-        ),
-      )
-    );
+              ));
   }
 }
