@@ -11,7 +11,6 @@ class ScienceNewsScreen extends StatefulWidget {
 }
 
 class _ScienceNewsScreenState extends State<ScienceNewsScreen> {
-
   List<Article> articles = [];
   bool _isLoading = false;
 
@@ -38,27 +37,29 @@ class _ScienceNewsScreenState extends State<ScienceNewsScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(
-          'Bussiness',
+          'Science',
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: 
-      _isLoading?
-      const Center(
-        child: CircularProgressIndicator(),
-      )
-      :
-      Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: articles.length,
-          itemBuilder: (context, index) {
-            return NewsCard(imageUrl: articles[index].urlToImage!, title: articles[index].title!, description: articles[index].description!, url: articles[index].url!);
-          }
-        ),
-      ),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(10),
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: articles.length,
+                  itemBuilder: (context, index) {
+                    return NewsCard(
+                        imageUrl: articles[index].urlToImage!,
+                        title: articles[index].title!,
+                        description: articles[index].description!,
+                        url: articles[index].url!);
+                  }),
+            ),
     );
-}}
+  }
+}

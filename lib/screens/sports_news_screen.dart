@@ -11,7 +11,6 @@ class SportsNewsScreen extends StatefulWidget {
 }
 
 class _SportsNewsScreenState extends State<SportsNewsScreen> {
-
   List<Article> articles = [];
   bool _isLoading = false;
 
@@ -38,28 +37,29 @@ class _SportsNewsScreenState extends State<SportsNewsScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(
-          'Bussiness',
+          'Sports',
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: 
-      _isLoading?
-      const Center(
-        child: CircularProgressIndicator(),
-      )
-      :
-      Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: articles.length,
-          itemBuilder: (context, index) {
-            return NewsCard(imageUrl: articles[index].urlToImage!, title: articles[index].title!, description: articles[index].description!, url: articles[index].url!);
-          }
-        ),
-      ),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(10),
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: articles.length,
+                  itemBuilder: (context, index) {
+                    return NewsCard(
+                        imageUrl: articles[index].urlToImage!,
+                        title: articles[index].title!,
+                        description: articles[index].description!,
+                        url: articles[index].url!);
+                  }),
+            ),
     );
   }
 }

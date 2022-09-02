@@ -8,7 +8,7 @@ class Article {
   String? url;
   String? urlToImage;
   String? content;
-  
+
   Article({
     this.source,
     this.author,

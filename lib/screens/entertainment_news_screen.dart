@@ -7,11 +7,11 @@ class EntertainmentNewsScreen extends StatefulWidget {
   const EntertainmentNewsScreen({super.key});
 
   @override
-  State<EntertainmentNewsScreen> createState() => _EntertainmentNewsScreenState();
+  State<EntertainmentNewsScreen> createState() =>
+      _EntertainmentNewsScreenState();
 }
 
 class _EntertainmentNewsScreenState extends State<EntertainmentNewsScreen> {
-
   List<Article> articles = [];
   bool _isLoading = false;
 
@@ -44,22 +44,23 @@ class _EntertainmentNewsScreenState extends State<EntertainmentNewsScreen> {
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: 
-      _isLoading?
-      const Center(
-        child: CircularProgressIndicator(),
-      )
-      :
-      Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: articles.length,
-          itemBuilder: (context, index) {
-            return NewsCard(imageUrl: articles[index].urlToImage!, title: articles[index].title!, description: articles[index].description!, url: articles[index].url!);
-          }
-        ),
-      ),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(10),
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: articles.length,
+                  itemBuilder: (context, index) {
+                    return NewsCard(
+                        imageUrl: articles[index].urlToImage!,
+                        title: articles[index].title!,
+                        description: articles[index].description!,
+                        url: articles[index].url!);
+                  }),
+            ),
     );
   }
 }
